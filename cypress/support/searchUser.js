@@ -66,6 +66,7 @@ export default class searchUser {
         cy.get(this.valuedetailsEmail).should('have.value', email)
     }
 
+    //Por algum motivo o codigo quebra quando executado apenas no terminal, analisar posteriormente 
     async finduserList(nome, email) {
         let usuarioEncontrado = false;
 
@@ -83,7 +84,7 @@ export default class searchUser {
         const percorrerUsuarios = async () => {        
             await cy.get(this.listUsers).children().each(($el) => {
                 verificarUsuario($el);
-                if (usuarioEncontrado){
+                if (usuarioEncontrado == true){
                     console.log(usuarioEncontrado)
                     return false;
                     
@@ -92,15 +93,15 @@ export default class searchUser {
             
         };
 
-        const verificarTodasPaginas = async function () {
+        const verificarTodasPaginas = async () => {
             do {
                 await percorrerUsuarios();
-                if (!usuarioEncontrado && cy.get(this.buttomNext).should('be.visible')) {
+                if (usuarioEncontrado == false) {
                     cy.get(this.buttomNext).click();
                     cy.wait(1000); 
                 
                 }
-            } while (!usuarioEncontrado && cy.get(this.buttomNext).should('be.visible'));
+            } while (usuarioEncontrado == false);
             
             if (!usuarioEncontrado) {
                 throw new Error('Usuário não encontrado');

@@ -6,7 +6,7 @@ const SearchUser = new searchUser()
 import createUser from "../support/createUser";
 const CreateUser = new createUser()
 
-const email = faker.internet.email().toLowerCase();
+const email = faker.random.alpha({ count: 5 }).toLowerCase() + '@sofia.com';
 const name = faker.name.firstName();
 
 describe('Listar usuários', () => {
@@ -31,7 +31,7 @@ describe('Listar usuários', () => {
     });
     CreateUser.getBack();
 
-    SearchUser.finduserList("name")
+    SearchUser.finduserList(name)
 
   });
 })  

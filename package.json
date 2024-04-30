@@ -7,5 +7,15 @@
     "chai": "^5.1.0",
     "faker": "^6.6.6",
     "mocha": "^10.4.0"
-  }
+  },
+  "name": "atividade5-academy-italorenan-vieira",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
